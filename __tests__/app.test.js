@@ -26,38 +26,38 @@ describe('anyApi routes', () => {
     
   });
   
-  // it('should be able to list candy by id', async () => {
-  //   const candy = await Candy.insert({ name: 'jellybeans', type: 'fruity', quantity: 3});
-  //   const res = await request(app).get(`/api/v1/candy/${candy.id}`);
+  it('should be able to list candy by id', async () => {
+    const candy = await Candy.insert({ name: 'jellybeans', type: 'fruity', quantity: 3});
+    const res = await request(app).get(`/api/v1/candy/${candy.id}`);
   
-  //   expect(res.body).toEqual(candy);
-  // });
+    expect(res.body).toEqual(candy);
+  });
 
-  // it('gets a list of candy', async () => {
-  //   const candy = await Candy.getAll();
-  //   const res = await request(app).get(`/api/v1/candy`);
+  it('gets a list of candy', async () => {
+    const candy = await Candy.getAll();
+    const res = await request(app).get(`/api/v1/candy`);
 
-  //   expect(res.body).toEqual(expected);
-  // });
+    expect(res.body).toEqual(candy);
+  });
   
-  // it('should be able to update candy', async () => {
-  //   const candy = await Candy.insert({ name: 'starburst', type: 'fruity', quantity: 2});
-  //   const res = await request(app)
-  //     .patch(`/api/v1/candy/${candy.id}`)
-  //     .send({ name: 'snickers', type: 'chocolate', quantity: 1 });
+  it('should be able to update candy', async () => {
+    const candy = await Candy.updateById({ name: 'starburst', type: 'fruity', quantity: 2});
+    const res = await request(app)
+      .patch(`/api/v1/candy/${candy.id}`)
+      .send({ name: 'snickers', type: 'chocolate', quantity: 1 });
   
   
-  // const expected = {
-  //   id: expect.any(String),
-  //   name: 'snickers',
-  //   type: 'chocolate',
-  //   quantity: 1,
-  // };
+  const expected = {
+    id: expect.any(String),
+    name: 'snickers',
+    type: 'chocolate',
+    quantity: 1,
+  };
   
-  // expect(res.body).toEqual(expected);
-  // expect(await getCandyById(candy.id)).toEqual(expected);
+  expect(res.body).toEqual(expected);
+  expect(await getCandyById(candy.id)).toEqual(expected);
   
-  // });
+  });
   
   // it('should be able to delete candy', async () => {
   //   const candy = await Candy.insert({ name: 'starburst', type: 'fruity', quantity: 2});
